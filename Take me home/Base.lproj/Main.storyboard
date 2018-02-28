@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" systemVersion="17A277" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="XyY-Gu-KZY">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -9,16 +13,85 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Take_me_home" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K0Z-41-mCI" userLabel="Home">
+                                <rect key="frame" x="142" y="320.5" width="90" height="90"/>
+                                <state key="normal" image="home"/>
+                                <connections>
+                                    <action selector="homeButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="mHu-cD-n3W"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="K0Z-41-mCI" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="WTO-FH-IMW"/>
+                            <constraint firstItem="K0Z-41-mCI" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="hwf-k9-DnF"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <navigationItem key="navigationItem" id="dfZ-Rj-MrX"/>
+                    <connections>
+                        <segue destination="Lxf-d2-cbN" kind="show" identifier="mapSegue" id="zwq-iQ-Uut"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="460" y="-15"/>
+        </scene>
+        <!--Maps View Controller-->
+        <scene sceneID="Ajj-zr-oAs">
+            <objects>
+                <viewController id="Lxf-d2-cbN" customClass="mapsViewController" customModule="Take_me_home" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="nCW-yr-Luj">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lmk-Zf-gkK" customClass="GMSMapView">
+                                <rect key="frame" x="-0.5" y="64" width="375" height="603"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="lmk-Zf-gkK" firstAttribute="width" secondItem="jXJ-xa-09b" secondAttribute="width" id="T1u-uh-6QS"/>
+                            <constraint firstItem="lmk-Zf-gkK" firstAttribute="centerY" secondItem="jXJ-xa-09b" secondAttribute="centerY" id="X0K-8e-xCq"/>
+                            <constraint firstItem="lmk-Zf-gkK" firstAttribute="height" secondItem="jXJ-xa-09b" secondAttribute="height" id="f2d-se-0RL"/>
+                            <constraint firstItem="lmk-Zf-gkK" firstAttribute="centerX" secondItem="jXJ-xa-09b" secondAttribute="centerX" id="y6t-kq-dR1"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="jXJ-xa-09b"/>
+                    </view>
+                    <connections>
+                        <outlet property="googleMaps" destination="lmk-Zf-gkK" id="Efl-2t-bG5"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="j3V-Wv-dA4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1241" y="35"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="hFP-3U-PDx">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="XyY-Gu-KZY" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="kEI-oa-ODd">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="Xmt-Qv-BRe"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="X0S-KK-fin" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-521" y="74"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="home" width="90" height="90"/>
+    </resources>
 </document>
